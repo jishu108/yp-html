@@ -72,17 +72,25 @@
             transform: translateY(-50%);
             color: #aaa;
         }
+        .input-with-icon.password-field {
+            display: flex;
+            align-items: center;
+            border: 1px solid #E0E0E0;
+            border-radius: 4px;
+        }
         .input-with-icon.password-field input {
-            padding-right: 50px; /* Further increased padding */
+            flex-grow: 1;
+            border: none;
+            padding-right: 15px;
+        }
+        .input-with-icon.password-field input:focus {
+            outline: none;
         }
         .input-with-icon.password-field .toggle-password {
-            position: absolute;
-            right: 15px; /* Keep right position */
-            top: 50%;
-            transform: translateY(-50%);
             cursor: pointer;
             color: #aaa;
             font-size: 18px;
+            padding: 0 15px;
         }
         .error-message {
             color: #8D3F54;
@@ -158,9 +166,11 @@
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <div class="input-with-icon password-field">
-                    <input type="password" id="password">
-                    <i class="fas fa-eye toggle-password"></i>
+                <div class="input-with-icon">
+                    <div class="password-field">
+                        <input type="password" id="password" style="padding-left: 10px;">
+                        <i class="fas fa-eye toggle-password"></i>
+                    </div>
                 </div>
                 <div class="error-message" id="passwordError"></div>
             </div>
