@@ -1,0 +1,53 @@
+/* YassirPay Admin Portal - Responsive Styles */
+
+@media (max-width: 1200px) {
+    .main-content {
+        padding: 24px;
+    }
+}
+
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        z-index: 1001;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .sidebar.mobile-open {
+        transform: translateX(0);
+    }
+
+    .top-bar {
+        left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .top-bar-content {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 576px) {
+    .user-info .user-role {
+        display: none;
+    }
+    .user-profile {
+        gap: 8px;
+    }
+    .content-header h1 {
+        font-size: 24px;
+    }
+}

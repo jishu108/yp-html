@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YassirPay Admin Portal - Dashboard</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/modules.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/modules.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="top-bar-content">
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <span class="user-name">John Doe</span>
+                    <span class="user-role">Super Admin</span>
+                </div>
+                <button class="logout-btn" title="Logout" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-credit-card"></i>
+                    <span>YassirPay</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="status-recovery.html" class="nav-link">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Status & Recovery</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="security-audit.html" class="nav-link">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Security & Audit</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Dashboard</h1>
+                <p class="subtitle">Platform activity overview</p>
+            </div>
+
+            <!-- Dashboard Widgets -->
+            <div class="dashboard-grid">
+                <!-- Widget 1: Customer Activations -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>New Activations Today</h3>
+                        <i class="fas fa-users widget-icon"></i>
+                    </div>
+                    <div class="widget-content">
+                        <div class="metric">1,245</div>
+                        <div class="metric-change positive">+5.2% from yesterday</div>
+                    </div>
+                </div>
+
+                <!-- Widget 2: Transaction Volume -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>Transaction Volume Today</h3>
+                        <i class="fas fa-exchange-alt widget-icon"></i>
+                    </div>
+                    <div class="widget-content">
+                        <div class="metric">QAR 54,321.89</div>
+                        <div class="metric-subtitle">456 Transactions</div>
+                    </div>
+                </div>
+
+                <!-- Widget 3: Pending FDA Acknowledgements -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>Unacknowledged Transactions</h3>
+                        <i class="fas fa-clock widget-icon"></i>
+                    </div>
+                    <div class="widget-content">
+                        <div class="metric warning">15</div>
+                        <a href="status-recovery.html" class="widget-link">View Details</a>
+                    </div>
+                </div>
+
+                <!-- Widget 4: Revenue -->
+                <div class="widget">
+                    <div class="widget-header">
+                        <h3>Revenue MTD</h3>
+                        <i class="fas fa-dollar-sign widget-icon"></i>
+                    </div>
+                    <div class="widget-content">
+                        <div class="metric">QAR 1,234.56</div>
+                        <div class="metric-subtitle">Month to date</div>
+                    </div>
+                </div>
+
+                <!-- Widget 5: Transaction Volume Chart -->
+                <div class="widget chart-widget">
+                    <div class="widget-header">
+                        <h3>Transaction Volume (Last 7 Days)</h3>
+                        <i class="fas fa-chart-bar widget-icon"></i>
+                    </div>
+                    <div class="widget-content">
+                        <canvas id="transactionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/dashboard.js"></script>
+</body>
+</html>

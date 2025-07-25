@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YassirPay Admin Portal - Settings</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/modules.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="top-bar-content">
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <span class="user-name">John Doe</span>
+                    <span class="user-role">Super Admin</span>
+                </div>
+                <button class="logout-btn" title="Logout" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-credit-card"></i>
+                    <span>YassirPay</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="status-recovery.html" class="nav-link">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Status & Recovery</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="security-audit.html" class="nav-link">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Security & Audit</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Settings</h1>
+                <p class="subtitle">Manage platform configuration and integrations</p>
+            </div>
+
+            <!-- Settings Form -->
+            <div class="settings-form">
+                <form id="settingsForm" class="form-container">
+                    <!-- FDA Integration Settings -->
+                    <div class="form-section">
+                        <h2>FDA Integration Settings</h2>
+                        <p class="form-description">Manage secure credentials for the Fawran Database API.</p>
+                        
+                        <div class="form-group">
+                            <label for="apiEndpoint">FDA API Endpoint</label>
+                            <input type="url" id="apiEndpoint" name="apiEndpoint" 
+                                   value="https://api.fawran.qa/v1/" 
+                                   class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="apiKey">API Key</label>
+                            <input type="password" id="apiKey" name="apiKey" 
+                                   class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="apiSecret">API Secret</label>
+                            <input type="password" id="apiSecret" name="apiSecret" 
+                                   class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary" onclick="rotateCredentials()">Rotate Credentials</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- MFA Modal -->
+    <div id="mfaModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h3>Confirm Action</h3>
+            <p style="margin-bottom: 15px;">Enter the code from your authenticator app to proceed.</p>
+            <input type="text" id="mfaCode" placeholder="6-digit code" class="form-control" style="max-width: 200px; text-align: center;">
+            <button class="btn btn-primary" id="mfaConfirmButton" disabled>Confirm</button>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/settings.js"></script>
+</body>
+</html>

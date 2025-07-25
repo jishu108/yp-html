@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YassirPay Admin Portal - Reports</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/modules.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="top-bar-content">
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <span class="user-name">John Doe</span>
+                    <span class="user-role">Super Admin</span>
+                </div>
+                <button class="logout-btn" title="Logout" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-credit-card"></i>
+                    <span>YassirPay</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="status-recovery.html" class="nav-link">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Status & Recovery</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="security-audit.html" class="nav-link">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Security & Audit</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Reports</h1>
+                <p class="subtitle">Comprehensive reporting and analytics</p>
+            </div>
+
+            <!-- Reports Tabs -->
+            <div class="reports-tabs">
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="customer-reports">Customer Reports</button>
+                    <button class="tab-btn" data-tab="transaction-reports">Transaction Reports</button>
+                    <button class="tab-btn" data-tab="dormant-accounts">Dormant Accounts</button>
+                    <button class="tab-btn" data-tab="commission-revenue">Commission & Revenue</button>
+                </div>
+
+                <!-- Common Filter Bar -->
+                <div class="filter-bar">
+                    <div class="form-group">
+                        <label for="startDate">Date Range</label>
+                        <input type="date" id="startDate" name="startDate" class="form-control">
+                        <input type="date" id="endDate" name="endDate" class="form-control">
+                        <div class="date-presets">
+                            <button class="btn btn-sm" data-preset="today">Today</button>
+                            <button class="btn btn-sm" data-preset="last7days">Last 7 Days</button>
+                            <button class="btn btn-sm" data-preset="month-to-date">Month-to-Date</button>
+                            <button class="btn btn-sm" data-preset="year-to-date">Year-to-Date</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="segmentFilter">Segment</label>
+                        <select id="segmentFilter" name="segmentFilter" class="form-control">
+                            <option value="all">All</option>
+                            <option value="individual">Individual</option>
+                            <option value="business">Business</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="channelFilter">Channel</label>
+                        <select id="channelFilter" name="channelFilter" class="form-control">
+                            <option value="all">All</option>
+                            <option value="mobile">Mobile App</option>
+                            <option value="web">Web Portal</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-actions">
+                        <button class="btn btn-primary" id="applyFiltersBtn">Apply Filters</button>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="exportDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Export <i class="fas fa-caret-down"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="exportDropdown">
+                                <li><a class="dropdown-item" href="#" data-export-type="csv">Export as CSV</a></li>
+                                <li><a class="dropdown-item" href="#" data-export-type="pdf">Export as PDF</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customer Reports Tab -->
+                <div class="tab-content active" id="customer-reports">
+                    <h2>Customer Reports</h2>
+                    <p>Comprehensive customer analytics and reporting.</p>
+                    
+                    <div class="dashboard-grid report-summary-cards">
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3>Activated Customers</h3>
+                                <i class="fas fa-user-plus widget-icon"></i>
+                            </div>
+                            <div class="widget-content">
+                                <div class="metric" id="activatedCustomersCount">0</div>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3>Onboarded for Payment</h3>
+                                <i class="fas fa-money-check-alt widget-icon"></i>
+                            </div>
+                            <div class="widget-content">
+                                <div class="metric" id="onboardedForPaymentCount">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>QID/CR</th>
+                                <th>Segment</th>
+                                <th>Activation Date</th>
+                                <th>Channel</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>John Doe</td>
+                                <td>123456789</td>
+                                <td>Individual</td>
+                                <td>2025-07-25</td>
+                                <td>Mobile App</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Transaction Reports Tab -->
+                <div class="tab-content" id="transaction-reports">
+                    <h2>Transaction Reports</h2>
+                    <p>Comprehensive transaction analytics and reporting.</p>
+                    
+                    <div class="dashboard-grid report-summary-cards">
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3>Transaction Volume</h3>
+                                <i class="fas fa-exchange-alt widget-icon"></i>
+                            </div>
+                            <div class="widget-content">
+                                <div class="metric" id="transactionVolume">QAR 0.00</div>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3>Transaction Count</h3>
+                                <i class="fas fa-sort-numeric-up-alt widget-icon"></i>
+                            </div>
+                            <div class="widget-content">
+                                <div class="metric" id="transactionCount">0</div>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3>Average Transaction Value</h3>
+                                <i class="fas fa-calculator widget-icon"></i>
+                            </div>
+                            <div class="widget-content">
+                                <div class="metric" id="averageTransactionValue">QAR 0.00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Transaction ID</th>
+                                <th>Timestamp</th>
+                                <th>Amount</th>
+                                <th>Customer</th>
+                                <th>Recipient</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>TXN123456</td>
+                                <td>2025-07-25 10:30</td>
+                                <td>QAR 100.00</td>
+                                <td>John Doe</td>
+                                <td>Jane Doe</td>
+                                <td>Completed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Dormant Accounts Tab -->
+                <div class="tab-content" id="dormant-accounts">
+                    <h2>Dormant Accounts</h2>
+                    <p>Lists accounts with no activity for 60+ days.</p>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Customer Name</th>
+                                <th>YP-ID</th>
+                                <th>Last Login</th>
+                                <th>Last Transaction Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Jane Doe</td>
+                                <td>YP987654</td>
+                                <td>2025-05-01</td>
+                                <td>2025-04-15</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Commission & Revenue Tab -->
+                <div class="tab-content" id="commission-revenue">
+                    <h2>Commission & Revenue</h2>
+                    <p>Commission and revenue analytics and reporting.</p>
+                    
+                    <div class="dashboard-grid report-summary-cards">
+                        <div class="widget">
+                            <div class="widget-header">
+                                <h3>Total Revenue</h3>
+                                <i class="fas fa-money-bill-wave widget-icon"></i>
+                            </div>
+                            <div class="widget-content">
+                                <div class="metric" id="totalRevenue">QAR 0.00</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Transaction ID</th>
+                                <th>Original Amount</th>
+                                <th>Fee</th>
+                                <th>Net Revenue</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2025-07-25</td>
+                                <td>TXN123456</td>
+                                <td>QAR 100.00</td>
+                                <td>QAR 1.00</td>
+                                <td>QAR 99.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/reports.js"></script>
+</body>
+</html>

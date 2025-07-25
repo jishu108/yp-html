@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YassirPay Admin Portal - Security & Audit</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/modules.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="top-bar-content">
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <span class="user-name">John Doe</span>
+                    <span class="user-role">Super Admin</span>
+                </div>
+                <button class="logout-btn" title="Logout" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-credit-card"></i>
+                    <span>YassirPay</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="status-recovery.html" class="nav-link">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Status & Recovery</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a href="security-audit.html" class="nav-link">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Security & Audit</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Security & Audit</h1>
+                <p class="subtitle">Manage access control and monitor system activities</p>
+            </div>
+
+            <!-- Security Tabs -->
+            <div class="security-tabs">
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="rbac">RBAC</button>
+                    <button class="tab-btn" data-tab="audit-trail">Audit Trail</button>
+                    <button class="tab-btn" data-tab="session-management">Session Management</button>
+                </div>
+
+                <!-- RBAC Tab -->
+                <div class="tab-content active" id="rbac">
+                    <div class="section-header-with-button">
+                        <h2>Admin Roles & Permissions</h2>
+                        <button class="btn btn-primary">+ Add New Role</button>
+                    </div>
+                    <p>Manage user roles and permissions across the platform.</p>
+                    
+                    <div class="security-section">
+                        <h3>Admin Roles</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Role Name</th>
+                                    <th>Description</th>
+                                    <th>Users Assigned</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Super Admin</td>
+                                    <td>Full access to all features</td>
+                                    <td>3</td>
+                                    <td class="actions">
+                                        <button class="btn" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger" title="Delete" data-modal="confirmationModal"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Auditor</td>
+                                    <td>Read-only access to all reports</td>
+                                    <td>5</td>
+                                    <td class="actions">
+                                        <button class="btn" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger" title="Delete" data-modal="confirmationModal"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Support Staff</td>
+                                    <td>Access to customer support features</td>
+                                    <td>10</td>
+                                    <td class="actions">
+                                        <button class="btn" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="btn btn-danger" title="Delete" data-modal="confirmationModal"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Audit Trail Tab -->
+                <div class="tab-content" id="audit-trail">
+                    <h2>Admin Action Log</h2>
+                    <p>All administrative actions are logged for compliance and review.</p>
+<div class="audit-filters">
+                        <input type="date" class="form-control" placeholder="Date Range">
+                        <input type="text" class="form-control" placeholder="User ID">
+                        <select class="form-control">
+                            <option value="">Action Type</option>
+                            <option value="settings-change">Settings Change</option>
+                            <option value="report-export">Report Export</option>
+                            <option value="login">Login</option>
+                            <option value="logout">Logout</option>
+                        </select>
+                        <button class="btn btn-primary">Apply Filters</button>
+                    </div>
+                    
+                    <div class="security-section">
+                        <h3>Recent Activities</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Admin User ID</th>
+                                    <th>IP Address</th>
+                                    <th>Action Type</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2025-07-25 14:30</td>
+                                    <td>john.doe</td>
+                                    <td>192.168.1.100</td>
+                                    <td>Settings Change</td>
+                                    <td>Changed FDA API Endpoint</td>
+                                </tr>
+                                <tr>
+                                    <td>2025-07-25 14:15</td>
+                                    <td>jane.smith</td>
+                                    <td>192.168.1.101</td>
+                                    <td>Report Export</td>
+                                    <td>Exported Dormant Accounts Report</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Session Management Tab -->
+                <div class="tab-content" id="session-management">
+                    <h2>Active Admin Sessions</h2>
+                    <p>Monitor and manage current logged-in sessions.</p>
+                    
+                    <div class="security-section">
+                        <h3>Active Sessions</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Role</th>
+                                    <th>Login Time</th>
+                                    <th>IP Address</th>
+                                    <th>Last Activity</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>john.doe</td>
+<!-- Confirmation Modal -->
+    <div id="confirmationModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Confirm Action</h2>
+            <p>Are you sure you want to perform this action?</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary modal-cancel">Cancel</button>
+                <button class="btn btn-danger modal-confirm">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminate Session Modal -->
+    <div id="terminateSessionModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Terminate Session</h2>
+            <p>Are you sure you want to terminate this session?</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary modal-cancel">Cancel</button>
+                <button class="btn btn-danger modal-confirm-terminate">Confirm Terminate</button>
+            </div>
+        </div>
+    </div>
+                                    <td>Super Admin</td>
+                                    <td>2025-07-25 14:30</td>
+                                    <td>192.168.1.100</td>
+                                    <td>2025-07-25 18:00</td>
+                                    <td class="actions">
+                                        <button class="btn btn-danger" data-modal="terminateSessionModal">Terminate Session</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/security-audit.js"></script>
+</body>
+</html>

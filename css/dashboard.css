@@ -1,0 +1,135 @@
+/* YassirPay Admin Portal - Dashboard Specific Styles */
+
+/* Dashboard Widgets */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.widget {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    padding: 24px;
+    transition: box-shadow 0.3s ease;
+}
+
+.widget:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.widget-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+    margin: 0;
+}
+
+.widget-icon {
+    font-size: 24px;
+    color: #3F9282;
+}
+
+.widget-content {
+    text-align: center;
+}
+
+.metric {
+    font-size: 36px;
+    font-weight: 700;
+    color: #333333;
+    margin-bottom: 8px;
+}
+
+.metric.warning {
+    color: #FFC107;
+}
+
+.metric-change {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 4px;
+}
+
+.metric-change.positive {
+    color: #4CAF50;
+}
+
+.metric-change.negative {
+    color: #8D3F54;
+}
+
+.metric-subtitle {
+    font-size: 14px;
+    color: #757575;
+    margin-top: 4px;
+}
+
+.widget-link {
+    display: inline-block;
+    margin-top: 12px;
+    color: #3F9282;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.widget-link:hover {
+    text-decoration: underline;
+}
+
+/* Chart Widget */
+.chart-widget {
+    grid-column: 1 / -1;
+}
+
+.chart-widget .widget-content {
+    height: 300px;
+}
+
+#transactionChart {
+    max-width: 100%;
+    height: 100%;
+}
+
+/* Responsive Dashboard */
+@media (min-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .widget {
+        padding: 16px;
+    }
+    
+    .metric {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .widget-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .widget-icon {
+        font-size: 20px;
+    }
+}

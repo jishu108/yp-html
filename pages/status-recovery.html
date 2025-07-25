@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YassirPay Admin Portal - Status & Recovery</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/modules.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <header class="top-bar">
+        <div class="top-bar-content">
+            <div class="user-profile">
+                <div class="user-avatar">JD</div>
+                <div class="user-info">
+                    <span class="user-name">John Doe</span>
+                    <span class="user-role">Super Admin</span>
+                </div>
+                <button class="logout-btn" title="Logout" onclick="window.location.href='../index.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="main-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-credit-card"></i>
+                    <span>YassirPay</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="dashboard.html" class="nav-link">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="status-recovery.html" class="nav-link">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Status & Recovery</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="security-audit.html" class="nav-link">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Security & Audit</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <h1>Status & Recovery</h1>
+                <p class="subtitle">Monitor transactions that require status verification from FDA</p>
+            </div>
+
+            <!-- Status & Recovery Content -->
+            <div class="status-recovery-content">
+                <h2>Failed & Unacknowledged Transactions</h2>
+                <p>Monitor transactions that require status verification from FDA. The system automatically retries in the background.</p>
+                
+                <div class="filter-bar">
+                    <input type="text" id="transactionSearch" class="form-control" placeholder="Search by Transaction ID or User ID">
+                    <select id="errorTypeFilter" class="form-control">
+                        <option value="all">Filter by Error Type</option>
+                        <option value="Timeout">Timeout</option>
+                        <option value="Network Failure">Network Failure</option>
+                        <option value="User Interruption">User Interruption</option>
+                    </select>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Timestamp</th>
+                            <th>Affected User (YP-ID)</th>
+                            <th>Amount (QAR)</th>
+                            <th>Current Status</th>
+                            <th>Error Type</th>
+                            <th>Last Retry</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TXN789012</td>
+                            <td>2025-07-25 08:45</td>
+                            <td>YP123456</td>
+                            <td>QAR 50.00</td>
+                            <td>Pending Acknowledgement</td>
+                            <td>Timeout</td>
+                            <td>2025-07-25 08:46</td>
+                            <td class="actions">
+                                <button class="btn btn-small btn-secondary">Re-Query Status</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/status-recovery.js"></script>
+</body>
+</html>

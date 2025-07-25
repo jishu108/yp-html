@@ -1,0 +1,290 @@
+/* YassirPay Admin Portal - Module Specific Styles */
+
+/* Settings Form */
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #FFFFFF;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.form-section {
+    margin-bottom: 32px;
+}
+
+.form-section h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-description {
+    font-size: 14px;
+    color: #757575;
+    margin-bottom: 24px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 16px;
+}
+
+/* Reports and Security Tabs */
+.reports-tabs .tab-navigation,
+.security-tabs .tab-navigation {
+    display: flex;
+    border-bottom: 1px solid #E0E0E0;
+    margin-bottom: 24px;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    background-color: var(--bg-secondary);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    align-items: flex-end; /* Align items to the bottom */
+}
+
+.filter-bar .form-group {
+    flex: 1;
+    min-width: 180px;
+    margin-bottom: 0; /* Remove default form-group margin */
+}
+
+.filter-bar .form-group label {
+    margin-bottom: 4px; /* Smaller margin for labels in filter bar */
+}
+
+.date-presets {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.date-presets .btn {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+.filter-actions {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.filter-actions .btn {
+    padding: 12px 24px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    /* Inherits btn styles */
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: .5rem 0;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: .25rem;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    color: #1e2125;
+    text-decoration: none;
+    background-color: #e9ecef;
+}
+
+.report-summary-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.reports-tabs .tab-btn,
+.security-tabs .tab-btn {
+    padding: 12px 24px;
+    cursor: pointer;
+    background-color: #F0F0F0; /* Light gray background for inactive tabs */
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 16px;
+    font-weight: 500;
+    color: #757575;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-right: 4px; /* Small gap between tabs */
+}
+
+.reports-tabs .tab-btn.active,
+.security-tabs .tab-btn.active {
+    background-color: #FFFFFF; /* White background for active tab */
+    color: #000000; /* Black text for active tab */
+    border-bottom-color: transparent; /* No bottom border for active tab */
+}
+
+.reports-tabs .tab-content,
+.security-tabs .tab-content {
+    display: none;
+}
+
+.reports-tabs .tab-content.active,
+.security-tabs .tab-content.active {
+    display: block;
+}
+
+/* Security & Audit Tables */
+.section-header-with-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.section-header-with-button h2 {
+    margin-bottom: 0;
+}
+
+.audit-filters {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.audit-filters .form-control {
+    flex: 1;
+    min-width: 150px;
+}
+
+.audit-filters .btn {
+    padding: 12px 24px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 24px;
+}
+
+.data-table th, .data-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.data-table th {
+    font-weight: 600;
+}
+
+.data-table .actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #ffffff;
+    margin: 15% auto;
+    padding: 40px;
+    border: none; /* Removed border */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Added box-shadow */
+    width: 100%; /* Changed width to 100% */
+    max-width: 400px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

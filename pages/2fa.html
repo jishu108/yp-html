@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YassirPay Admin Portal - Verify Identity</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f4f7f6; /* Light background for the page */
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        .auth-card {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .auth-card img {
+            height: 100px; /* Set height to 100px */
+            width: auto; /* Adjust width accordingly */
+            margin-bottom: 24px;
+        }
+        .auth-card h2 {
+            margin-top: 24px;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        .auth-card p.caption {
+            margin-top: 8px;
+            margin-bottom: 32px;
+            color: #666;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        .otp-input-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .otp-input-container input {
+            width: 40px;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+            border: 1px solid #E0E0E0;
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        .otp-input-container input:focus {
+            border-color: #3F9282;
+            outline: none;
+        }
+        .error-message {
+            color: #8D3F54;
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+            display: none; /* Hidden by default */
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            background-color: #3F9282;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 24px;
+        }
+        .btn-primary:hover:not(:disabled) {
+            background-color: #347a6d; /* Slightly darker shade */
+        }
+        .btn-primary:disabled {
+            background-color: #E0E0E0;
+            cursor: not-allowed;
+        }
+        .btn-primary .spinner {
+            display: none;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        .btn-primary.loading .spinner {
+            display: block;
+        }
+        .btn-primary.loading .button-text {
+            display: none;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .footer-link {
+            display: block;
+            margin-top: 16px;
+            color: #3F9282;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .footer-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-card">
+        <img src="../images/YP-logo.svg" alt="YassirPay Logo">
+        <h2>Verify Your Identity</h2>
+        <p class="caption">Enter the 6-digit code from your authenticator app.</p>
+
+        <form id="otpForm">
+            <div class="form-group">
+                <label for="otpCode">Authentication Code</label>
+                <div class="otp-input-container" id="otpInputContainer">
+                    <input type="text" maxlength="1" class="otp-input" data-index="0">
+                    <input type="text" maxlength="1" class="otp-input" data-index="1">
+                    <input type="text" maxlength="1" class="otp-input" data-index="2">
+                    <input type="text" maxlength="1" class="otp-input" data-index="3">
+                    <input type="text" maxlength="1" class="otp-input" data-index="4">
+                    <input type="text" maxlength="1" class="otp-input" data-index="5">
+                </div>
+                <div class="error-message" id="otpError"></div>
+            </div>
+            <button type="submit" class="btn-primary" id="verifyButton" disabled>
+                <span class="button-text">Verify</span>
+                <span class="spinner"></span>
+            </button>
+        </form>
+        <a href="#" class="footer-link">Having trouble? Use a recovery code.</a>
+    </div>
+
+    <script>
+        const otpInputs = document.querySelectorAll('.otp-input');
+        const verifyButton = document.getElementById('verifyButton');
+        const otpError = document.getElementById('otpError');
+        const otpForm = document.getElementById('otpForm');
+
+        function validateOtp() {
+            const allFilled = Array.from(otpInputs).every(input => input.value.trim() !== '');
+            verifyButton.disabled = !allFilled;
+        }
+
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', function() {
+                if (this.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+                validateOtp();
+            });
+
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+
+            input.addEventListener('paste', function(e) {
+                e.preventDefault();
+                const pasteData = e.clipboardData.getData('text').trim();
+                if (pasteData.length === otpInputs.length && /^\d+$/.test(pasteData)) {
+                    pasteData.split('').forEach((char, i) => {
+                        if (otpInputs[i]) {
+                            otpInputs[i].value = char;
+                        }
+                    });
+                    validateOtp();
+                    otpInputs[otpInputs.length - 1].focus(); // Focus last input after paste
+                }
+            });
+        });
+
+        otpForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            verifyButton.classList.add('loading');
+            verifyButton.disabled = true;
+            otpError.style.display = 'none'; // Hide previous errors
+
+            const enteredOtp = Array.from(otpInputs).map(input => input.value).join('');
+
+            // Simulate API call
+            setTimeout(() => {
+                verifyButton.classList.remove('loading');
+                verifyButton.disabled = false; // Re-enable after loading
+
+                // Allow any 6-digit code to pass
+                window.location.href = 'dashboard.html'; // Redirect to dashboard
+            }, 2000);
+        });
+
+        // Initial validation check
+        validateOtp();
+    </script>
+</body>
+</html>
